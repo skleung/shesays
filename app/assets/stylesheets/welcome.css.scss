@@ -15,3 +15,11 @@
     border: 0;
   }
 }
+#company-prefix {
+  position: absolute;
+}
+#company-name {
+  position: absolute;
+  margin-left: 35px;
+  z-index:20;
+}

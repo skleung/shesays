@@ -1,7 +1,7 @@
  // Initialize varibles
   var $window = $(window);
-  var $companyInput = $('#company'); // Input for username
-
+  var $companyInput = $('#company-name'); // Input for username
+  var $slider = $('.bxslider');
   var $loginPage = $('.login.page'); // The login page
   var $chatPage = $('.chat.page'); // The chatroom page
 
@@ -12,7 +12,6 @@
   // Sets the client's companyName
   function setCompanyName() {
     companyName = cleanInput($companyInput.html().trim());
-          console.log("sf");
 
     // If the companyName is valid
     if (companyName) {
@@ -20,8 +19,7 @@
       $chatPage.show();
       $loginPage.off('click');
       // Tell the server your username
-      //TODO: query the server here for companyName
-      $("#selected-company").html(companyName);
+
     }
   }
 
@@ -38,19 +36,23 @@
       $companyInput.focus();
     }
     if (!clearedCompany) {
-      $companyInput.html("");
-      clearedCompany = true;
+      $('.bxslider').css("color", "#222");
     }
     // When the client hits ENTER on their keyboard
     if (event.which === 13) {
       if (companyName) {
         typing = false;
       } else {
-        setCompanyName();
+        // setCompanyName();
       }
     }
   });
 
+  $companyInput.click(function(event){
+    console.log('sdlfkjsdf');
+    $('.bxslider').css("color", "#222");
+  });
+
   window.onload = function() {
-    $("#company").focus();
+    $("#company-name").focus();
   };
