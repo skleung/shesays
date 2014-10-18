@@ -7,7 +7,9 @@ class CompaniesController < ApplicationController
 
   def search
     @company = Company.find_by_name(params[:q].downcase)
-    if @company.nil?
+    if @company.nil? and params[:q].blank?
+      redirect_to(:controller=>"welcome", :action=>"index")
+    elsif @company.nil?
       redirect_to(:action=>"new", :name =>params[:q].downcase)
     else
       redirect_to(:action=>"show", :id =>@company.id)
