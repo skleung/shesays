@@ -11,7 +11,7 @@
           <!-- <img class="logo" src= "<%= @logo_url %>"/> -->
           <h2><%= @company.name %></h2>
           <h4><%= @company.description %></h4>
-          <h4>Average Sentiment: <%= @company.average_sentiment_label %> </h4>
+          <h4>Average Sentiment: <b><%= @company.average_sentiment_label %></b> </h4>
           <%= link_to raw("<strong>review</strong>++"), new_company_review_path(@company), :class=>"btn btn-primary", :id=>"new-review"%>
 
       </div>
@@ -27,13 +27,13 @@
                 <p><%=review.content %> </p>
                 <% sentiment = review.sentiment_label %>
                 <% if sentiment == "neutral" %>
-                	<p class = "pull-left">Review's Sentiment: <b><font color = gray> <%= review.sentiment_label %> </font></b></p>
+                	<p class = "pull-left">Sentiment: <b><font color = gray> <%= review.sentiment_label %> </font></b></p>
 
                 <%elsif sentiment == "negative"%>    
-	               <p class = "pull-left">Review's Sentiment: <b> <font color = black><%= review.sentiment_label %></font> </b></p>
+	               <p class = "pull-left">Sentiment: <b> <font color = black><%= review.sentiment_label %></font> </b></p>
 
 	            <%else%>
-                <p class = "pull-left">Review's Sentiment: <b> <%= review.sentiment_label %> </b></p>
+                <p class = "pull-left">Sentiment: <b> <%= review.sentiment_label %> </b></p>
                 <%end%>
 
                 <p class = "pull-right"><b><%=review.created_at.strftime("%m-%d-%Y") %></b> </p>
