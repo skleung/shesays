@@ -2,14 +2,13 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
   respond_to :html, :xml, :json
   def index
-    @companies = Company.all
-    respond_with(@companies)
+    redirect_to(:controller=>"welcome", :action=>"index")
   end
 
   def search
-    @company = Company.find_by_name(params[:q])
+    @company = Company.find_by_name(params[:q].downcase)
     if @company.nil?
-      redirect_to(:action=>"new", :name =>params[:q])
+      redirect_to(:action=>"new", :name =>params[:q].downcase)
     else
       redirect_to(:action=>"show", :id =>@company.id)
     end
@@ -51,6 +50,8 @@ class CompaniesController < ApplicationController
     end
 
     def company_params
+      #force downcase
+      params[:company][:name] = params[:company][:name].downcase
       params.require(:company).permit(:name, :description)
     end
 

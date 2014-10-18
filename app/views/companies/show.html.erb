@@ -1,7 +1,4 @@
-<p id="notice"><%= notice %></p>
-<div class="pull-right">
-  <%= link_to raw("<i class='fa fa-plus'></i> Add Review"), new_company_review_path(@company), :class=>"btn btn-primary", :id=>"new-review"%>
-</div>
+<p class="text-right text-lowercase text-muted" id="notice"><%= notice %></p>
 <%= render 'layouts/navigation'%>
 
 
@@ -10,13 +7,16 @@
 
     <div class="col-md-3">
       <div class="company-bubble">
-        <h4><%= @company.name %></h4>
-          <img class="company-logo" src= "<%= @logo_url %>"/>
-        <%= @company.description %>
+
+          <!-- <img class="logo" src= "<%= @logo_url %>"/> -->
+          <h2><%= @company.name %></h2>
+          <h4><%= @company.description %></h4>
+          <%= link_to raw("<strong>review</strong>++"), new_company_review_path(@company), :class=>"btn btn-primary", :id=>"new-review"%>
+          
       </div>
     </div>
 
-    <div class="col-md-7 col-md-offset-1 reviews-wrapper" >
+    <div class="col-md-8 reviews-wrapper" >
       <div>
         <ul class="reviews">
           <li>
@@ -25,9 +25,27 @@
             </p>
           </li>
 
-          <% @company.reviews.each do |review| %>
-            <li>
-              <p><%=review.content %> </p>
+          <li>
+            <p>
+            This is hard-coded. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in tellus felis. Suspendisse potenti. Quisque quis justo scelerisque augue ornare commodo id ac nisi. Sed ac facilisis dolor. Curabitur ultrices pharetra interdum. Vestibulum luctus euismod pellentesque. Nulla elit nisi, varius sit amet imperdiet at, auctor vel libero. Sed ac turpis nec mi rhoncus tristique eget non massa. Nunc magna ante, porta a mi ut, finibus eleifend justo. Pellentesque faucibus sapien mi, ut imperdiet velit condimentum quis. Fusce at aliquet odio. Nulla dolor nulla, sodales et fringilla sit amet,
+            </p>
+          </li>
+          <li>
+            <p>
+            This is hard-coded. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in tellus felis. Suspendisse potenti. Quisque quis justo scelerisque augue ornare commodo id ac nisi. Sed ac facilisis dolor. Curabitur ultrices pharetra interdum. Vestibulum luctus euismod pellentesque. Nulla elit nisi, varius sit amet imperdiet at, auctor vel libero. Sed ac turpis nec mi rhoncus tristique eget non massa. Nunc magna ante, porta a mi ut, finibus eleifend justo. Pellentesque faucibus sapien mi, ut imperdiet velit condimentum quis. Fusce at aliquet odio. Nulla dolor nulla, sodales et fringilla sit amet,
+            </p>
+          </li>
+          
+          <% if @company.reviews.any? %>
+            <% @company.reviews.each do |review| %>
+              <li>
+                <p><%=review.content %> </p>
+              </li>
+            <% end %>
+          <% else %>
+            <li> 
+              <p> No reviews for <b><%= @company.name.capitalize %> </b> have been added. <%= link_to "Add", new_company_review_path(@company) %> your own review 
+              </p>
             </li>
           <% end %>
         </ul>
