@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>she says</title>
+
+  <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <ul class="pages">
+    <li class="chat page">
+      <div class="container">
+        <h1><strong>she</strong>says</h1>
+        <h3>See what she's saying @<span id="selected-company"> </span></h3>
+      </div>
+    </li>
+    <li class="login page">
+
+      <div class="container">
+        <div class="header">
+          <h1><strong>she</strong>says
+          <div class="pull-right">
+            <ul class="inline-links">
+              <li>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+              </li>
+            </ul>
+          </div>
+          </h1>
+            <h3 class="subtitle"> 
+              An anonymous review platform for women in tech.
+            </h3>
+        </div>
+          
+        <div class="form">
+          <div class="title">What did <strong>she</strong>say</div>
+          <div class="title">@<span id="company" contenteditable="true">company</span></div>
+        </div>
+      </div>  
+    </li>
+  </ul>
+  
+  <script>
+     // Initialize varibles
+  var $window = $(window);
+  var $companyInput = $('#company'); // Input for username
+
+  var $loginPage = $('.login.page'); // The login page
+  var $chatPage = $('.chat.page'); // The chatroom page
+
+  // Prompt for setting a username
+  var companyName;
+  var clearedCompany = false;
+
+  // Sets the client's companyName
+  function setCompanyName() {
+    companyName = cleanInput($companyInput.html().trim());
+          console.log("sf");
+
+    // If the companyName is valid
+    if (companyName) {
+      $loginPage.fadeOut();
+      $chatPage.show();
+      $loginPage.off('click');
+      // Tell the server your username
+      //TODO: query the server here for companyName
+      $("#selected-company").html(companyName);
+    }
+  }
+
+  // Prevents input from having injected markup
+  function cleanInput (input) {
+    return $('<div/>').text(input).text();
+  }
+
+  // Keyboard events
+
+  $window.keydown(function (event) {
+    // Auto-focus the current input when a key is typed
+    if (!(event.ctrlKey || event.metaKey || event.altKey)) {
+      $companyInput.focus();
+    }
+    if (!clearedCompany) {
+      $companyInput.html("");
+      clearedCompany = true;
+    }
+    // When the client hits ENTER on their keyboard
+    if (event.which === 13) {
+      if (companyName) {
+        typing = false;
+      } else {
+        setCompanyName();
+      }
+    }
+  });
+
+  window.onload = function() {
+    $("#company").focus();
+  };
+
+  </script>
+</body>
+</html>
