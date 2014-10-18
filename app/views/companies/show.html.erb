@@ -20,14 +20,24 @@
     <div class="col-md-8 reviews-wrapper" >
       <div>
         <ul class="reviews">
-          
+
           <% if @company.reviews.any? %>
             <% @company.reviews.each do |review| %>
               <li>
                 <p><%=review.content %> </p>
-                <small class="text-primary"><%=review.updated_at.to_date %></small>
+                <% sentiment = review.sentiment_label %>
+                <% if sentiment == "neutral" %>
+                	<p class = "pull-left">Review's Sentiment: <b><font color = gray> <%= review.sentiment_label %> </font></b></p>
+
+                <%elsif sentiment == "negative"%>    
+	               <p class = "pull-left">Review's Sentiment: <b> <font color = black><%= review.sentiment_label %></font> </b></p>
+
+	            <%else%>
+                <p class = "pull-left">Review's Sentiment: <b> <%= review.sentiment_label %> </b></p>
+                <%end%>
+
+                <p class = "pull-right"><b><%=review.created_at.strftime("%m-%d-%Y") %></b> </p>
                 <br>
-                <p>Review's Sentiment: <%= review.sentiment_label %><p>
               </li>
 
             <% end %>
