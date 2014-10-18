@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018064903) do
+ActiveRecord::Schema.define(version: 20141018085646) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20141018064903) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "company_id"
+    t.text     "encrypted_key"
   end
 
   create_table "users", force: true do |t|
