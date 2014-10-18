@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @srcurl = "http://data.scrapelogo.com/"+@company.name+"/logo"
+    @logo_url = get_company_logo_url(@company.name)
     respond_with(@company)
   end
 
@@ -53,4 +53,11 @@ class CompaniesController < ApplicationController
     def company_params
       params.require(:company).permit(:name, :description)
     end
+
+    def get_company_logo_url(company_name)
+      require 'image_suckr'
+      suckr = ImageSuckr::GoogleSuckr.new
+      url = suckr.get_image_url({"q" => company_name + " logo", "rsz" => 1})
+    end
+
 end
