@@ -15,14 +15,14 @@
       <div class="container">
         <%= render 'layouts/navigation' %>
         <div class="header">
-          <h1><strong>she</strong>says
+          <h1><b>she</b>says
           <div class="pull-right">
             <ul class="inline-links">
               <li>
-                <a href="#"><i class="fa fa-3x fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
               </li>
               <li>
-                <a href="#"><i class="fa fa-3x fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
               </li>
             </ul>
           </div>
@@ -33,10 +33,10 @@
         </div>
           
         <div class="form">
-          <div class="title">What did <strong>she</strong>say</div>
+          <div class="title">What did <b>she</b>say</div>
           <div class="title">@
-          <%= form_tag('/search', id: "company-form", method: "get") do %>
-            <%= text_field_tag(:q) %>
+          <%= form_tag('/search', id: "company-input", method: "get") do %>
+            <%= text_field_tag :q, :q, :autocomplete => :off %>
           <% end %>
         </div>
       </div>

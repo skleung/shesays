@@ -1,3 +1,32 @@
 // Place all the styles related to the companies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.company-bubble {
+  position: fixed;
+  top: 100px;
+  left: 50px;
+  width: 300px;
+  border-radius: 5px;
+  background-color: #6bcbca;
+  padding: 10px;
+  img {
+    max-width: 100%;
+  }
+}
+
+.reviews-wrapper{
+  background-color: #97ce68;
+  li {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #efefef;
+  }
+}
+
+html {
+  background-color: #f5f4eb;
+}
+body {
+  background-color: #f5f4eb;
+}

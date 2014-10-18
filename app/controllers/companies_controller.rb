@@ -16,6 +16,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @srcurl = "http://data.scrapelogo.com/"+@company.name+"/logo"
     respond_with(@company)
   end
 
