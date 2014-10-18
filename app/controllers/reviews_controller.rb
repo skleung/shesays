@@ -1,5 +1,3 @@
-require 'HTTParty'
-
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_filter :check_logged_in, only: [:new, :create]
