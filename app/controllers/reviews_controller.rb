@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   respond_to :html, :xml, :json
   def index
     @reviews = Review.all
-    render "index"
+    respond_with(@reviews)
   end
 
   def show
@@ -11,17 +11,23 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @company = Company.find(params[:company_id])
     @review = Review.new
-    render "new"
+    respond_with(@review)
   end
 
   def edit
   end
 
   def create
+    @company = Company.find(params[:company_id])
     @review = Review.new(review_params)
-    flash[:notice] = 'Review was successfully created.' if @review.save
-    respond_with(@review)
+    if @review.save
+        @company.reviews.append(@review)
+        @company.save
+        flash[:notice] = 'Review was successfully created.' if @review.save
+    end
+    respond_with(@company)
   end
 
   def update
