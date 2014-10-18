@@ -76,13 +76,15 @@ class ReviewsController < ApplicationController
       }
       response = HTTParty.post(url, :body => body)
       response_content = JSON.parse response.body
-      result = {
-        :sentiment => response_content["docSentiment"]["type"],
-        :score => response_content["docSentiment"]["score"]
-      }
+      if response_content['status'] == 'ERROR'
+        result = {:sentiment => 'neutral', :score => 0}
+      else
+        result = {
+          :sentiment => response_content["docSentiment"]["type"],
+          :score => response_content["docSentiment"]["score"]
+        }
+      end
+      return result
     end
 
-    def alt_sentiment(review_content)
-      
-    end
 end
