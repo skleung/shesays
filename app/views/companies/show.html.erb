@@ -22,7 +22,8 @@
         <ul class="reviews">
 
           <% if @company.reviews.any? %>
-            <% @company.reviews.each do |review| %>
+            <% byebug %>
+            <% @company.reviews.order(updated_at: :desc).each do |review| %>
               <li>
                 <p><%=review.content %> </p>
                 <% sentiment = review.sentiment_label %>
