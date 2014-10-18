@@ -6,20 +6,22 @@
   var $chatPage = $('.chat.page'); // The chatroom page
 
   // Prompt for setting a username
-  var username;
+  var companyName;
   var clearedCompany = false;
 
-  // Sets the client's username
-  function setUsername () {
-    username = cleanInput($usernameInput.val().trim());
+  // Sets the client's companyName
+  function setCompanyName() {
+    companyName = cleanInput($companyInput.html().trim());
+          console.log("sf");
 
-    // If the username is valid
-    if (username) {
+    // If the companyName is valid
+    if (companyName) {
       $loginPage.fadeOut();
       $chatPage.show();
       $loginPage.off('click');
-
       // Tell the server your username
+      //TODO: query the server here for companyName
+      $("#selected-company").html(companyName);
     }
   }
 
@@ -36,16 +38,15 @@
       $companyInput.focus();
     }
     if (!clearedCompany) {
-      console.log("sf");
       $companyInput.html("");
       clearedCompany = true;
     }
     // When the client hits ENTER on their keyboard
     if (event.which === 13) {
-      if (username) {
+      if (companyName) {
         typing = false;
       } else {
-        setUsername();
+        setCompanyName();
       }
     }
   });

@@ -31,6 +31,10 @@ ul {
   word-wrap: break-word;
 }
 
+strong{
+  color: #FF0080;
+  font-weight: 700;
+}
 /* Pages */
 
 .pages {
@@ -50,11 +54,6 @@ ul {
 
 .login.page {
   background-color: #222;
-}
-
-.login.page strong{
-  color: #FF0080;
-  font-weight: 700;
 }
 
 .login.page #company{
