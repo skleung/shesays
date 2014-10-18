@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @company = Company.find(params[:company_id])
     @review = Review.new
     respond_with(@review)
   end
@@ -19,9 +20,14 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @company = Company.find(params[:company_id])
     @review = Review.new(review_params)
-    flash[:notice] = 'Review was successfully created.' if @review.save
-    respond_with(@review)
+    if @review.save
+        @company.reviews.append(@review)
+        @company.save
+        flash[:notice] = 'Review was successfully created.' if @review.save
+    end
+    respond_with(@company)
   end
 
   def update

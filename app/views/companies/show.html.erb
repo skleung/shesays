@@ -10,5 +10,11 @@
   <%= @company.description %>
 </p>
 
+<% @company.reviews.each do |review| %>
+  <h2>Review</h2>
+  <p><%= review.content %></p>
+<% end %>
+
+
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
