@@ -1,18 +1,27 @@
 // import the CSS framework
+
+$brand-primary: #FF0080;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-  background-color: #f5f4eb;
-}
 // make all images responsive by default
 img {
   @extend .img-responsive;
   margin: 0 auto;
   }
 // override for the 'Home' navigation link
+.navbar {
+  font-size: 24px;
+  font-weight: 100;
+  text-transform: lowercase;
+  height: 100px;
+  background-color: inherit;
+}
 .navbar-brand {
-  font-size: inherit;
+  font-size: 24px;
+  color: #222;
+  font-weight: 100;
 }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY

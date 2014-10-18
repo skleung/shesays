@@ -12,16 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, :value => (@name.nil? ? "": @name) %>
+    <%= f.text_field :name, :value => (@name.nil? ? "": @name), :id=>"name" %>
   </div>
 
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :id=>"content", :placeholder=>raw("[no description for this company has been added yet - add a description here]")%>
   </div>
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "add company", :class=>"btn btn-primary"%>
   </div>
 <% end %>

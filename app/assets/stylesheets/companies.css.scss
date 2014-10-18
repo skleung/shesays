@@ -7,28 +7,28 @@
   left: 50px;
   width: 300px;
   border-radius: 5px;
-  background-color: #6bcbca;
   padding: 10px;
   img {
     max-width: 100%;
   }
+  .logo {
+    max-width: 150px;
+    height: auto;
+    margin-left: 0;
+    padding: 4px;
+    border: 2px solid gray;
+  }
+  h4 {
+    color: gray;
+    margin-top: 0;
+    font-weight: 200;
+  }
 }
 
-
-
 .reviews-wrapper{
-  background-color: #97ce68;
   li {
     margin: 10px;
     padding: 10px;
     border-radius: 5px;
-    background-color: #efefef;
   }
-}
-
-html {
-  background-color: #f5f4eb;
-}
-body {
-  background-color: #f5f4eb;
 }

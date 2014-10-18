@@ -1,8 +1,55 @@
-<h1>New review</h1>
 
-<%= form_for [@company, @review] do |f| %>
-    <%= f.text_area :content, size: "60x12" %>
-    <%= f.submit "Create" %>
-<% end %>
+<div class="container" >
+  <div class="row">
+    <div class="col-md-8 col-md-3">
+      <h1 class="thin-text">add <b>your</b> review for <span class="medium-text"><%= @company.name.capitalize %></span></h1>
+      <%= form_for [@company, @review] do |f| %>
+        <%= f.text_area :content, :rows=>"1", :id=>"content" %>
+        </br>
+      <%= f.submit "create", :class=>"btn btn-primary"%><%= link_to 'back', @company, :class=>"btn btn-link"%>
 
-<%= link_to 'Back', @company %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+//dynamic textarea resizing
+
+var observe;
+if (window.attachEvent) {
+    observe = function (element, event, handler) {
+        element.attachEvent('on'+event, handler);
+    };
+}
+else {
+    observe = function (element, event, handler) {
+        element.addEventListener(event, handler, false);
+    };
+}
+function init () {
+    var text = document.getElementById('content');
+    function resize () {
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight+'px';
+    }
+    /* 0-timeout to get the already changed text */
+    function delayedResize () {
+        window.setTimeout(resize, 0);
+    }
+    observe(text, 'change',  resize);
+    observe(text, 'cut',     delayedResize);
+    observe(text, 'paste',   delayedResize);
+    observe(text, 'drop',    delayedResize);
+    observe(text, 'keydown', delayedResize);
+
+    text.focus();
+    text.select();
+    resize();
+}
+
+$(document).ready(function() {
+  init();
+});
+</script>
+
