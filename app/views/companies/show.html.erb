@@ -40,6 +40,8 @@
             <% @company.reviews.each do |review| %>
               <li>
                 <p><%=review.content %> </p>
+                <br>
+                <p>Review's Sentiment: <%= review.sentiment_label %><p>
               </li>
             <% end %>
           <% else %>
