@@ -1,6 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_filter :check_logged_in, only: [:new, :create]
   respond_to :html, :xml, :json
+
   def index
     @reviews = Review.all
     respond_with(@reviews)
@@ -22,6 +24,7 @@ class ReviewsController < ApplicationController
   def create
     @company = Company.find(params[:company_id])
     @review = Review.new(review_params)
+    @review.encrypted_key = User.hash_email(current_user.email)
     if @review.save
         @company.reviews.append(@review)
         @company.save
@@ -47,5 +50,11 @@ class ReviewsController < ApplicationController
 
     def review_params
       params.require(:review).permit(:content)
+    end
+
+    def check_logged_in
+      if !current_user
+        redirect_to(new_user_session_path)
+      end
     end
 end
