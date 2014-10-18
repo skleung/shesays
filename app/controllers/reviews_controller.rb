@@ -83,4 +83,8 @@ class ReviewsController < ApplicationController
         :score => response_content["docSentiment"]["score"]
       }
     end
+
+    def alt_sentiment(review_content)
+      
+    end
 end
