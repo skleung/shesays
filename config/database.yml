@@ -23,5 +23,5 @@ test:
 production:
   adapter: postgresql
   encoding: utf8
-  database: db/production.postgresql
+  database: DATABASE_URL
 
