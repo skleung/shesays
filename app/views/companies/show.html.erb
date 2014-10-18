@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<div class="pull-right">
+  <%= link_to raw("<i class='fa fa-plus'></i> Add Review"), new_company_review_path(@company), :class=>"btn btn-primary", :id=>"new-review"%>
+</div>
 <%= render 'layouts/navigation'%>
 
 
@@ -17,7 +19,6 @@
     <div class="col-md-7 col-md-offset-1 reviews-wrapper" >
       <div>
         <ul class="reviews">
-
           <li>
             <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in tellus felis. Suspendisse potenti. Quisque quis justo scelerisque augue ornare commodo id ac nisi. Sed ac facilisis dolor. Curabitur ultrices pharetra interdum. Vestibulum luctus euismod pellentesque. Nulla elit nisi, varius sit amet imperdiet at, auctor vel libero. Sed ac turpis nec mi rhoncus tristique eget non massa. Nunc magna ante, porta a mi ut, finibus eleifend justo. Pellentesque faucibus sapien mi, ut imperdiet velit condimentum quis. Fusce at aliquet odio. Nulla dolor nulla, sodales et fringilla sit amet,
@@ -36,7 +37,7 @@
   </div>
 </div>
 
-<% if current_user.name == "admin" %>
+<% if current_user and current_user.name == "admin" %>
   <%= link_to 'Edit', edit_company_path(@company) %> |
   <%= link_to 'Back', companies_path %>
 <% end %>
