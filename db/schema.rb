@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20141018164700) do
   end
 
   create_table "reviews", force: true do |t|
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "company_id"

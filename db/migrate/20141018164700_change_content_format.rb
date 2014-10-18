@@ -1,11 +1,10 @@
 class ChangeContentFormat < ActiveRecord::Migration
   def change
-    def up
-      change_column :reviews, :content, :text
-    end
-
-    def down
-      change_column :reviews, :content, :string
+    reversible do |dir|
+      change_table :reviews do |t|
+        dir.up   { t.change :content, :text }
+        dir.down { t.change :content, :string }
+      end
     end
   end
 end
