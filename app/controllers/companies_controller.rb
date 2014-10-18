@@ -6,11 +6,21 @@ class CompaniesController < ApplicationController
     respond_with(@companies)
   end
 
+  def search
+    @company = Company.find_by_name(params[:q])
+    if @company.nil?
+      redirect_to(:action=>"new", :name =>params[:q])
+    else
+      redirect_to(:action=>"show", :id =>@company.id)
+    end
+  end
+
   def show
     respond_with(@company)
   end
 
   def new
+    @name = params[:name]
     @company = Company.new
     respond_with(@company)
   end

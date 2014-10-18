@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   respond_to :html, :xml, :json
   def index
     @reviews = Review.all
-    render "index"
+    respond_with(@reviews)
   end
 
   def show
@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    render "new"
+    respond_with(@review)
   end
 
   def edit
