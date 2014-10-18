@@ -37,3 +37,4 @@ group :test do
 end
 
 gem 'image_suckr'
+gem 'httparty'

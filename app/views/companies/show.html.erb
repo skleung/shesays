@@ -25,6 +25,8 @@
               <li>
                 <p><%=review.content %> </p>
                 <small class="text-primary"><%=review.updated_at.to_date %></small>
+                <br>
+                <p>Review's Sentiment: <%= review.sentiment_label %><p>
               </li>
 
             <% end %>
