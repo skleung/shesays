@@ -53,6 +53,7 @@ strong{
 /* Login Page */
 
 .login.page {
+  color: #fff;
   background-color: #222;
 }
 
@@ -61,19 +62,16 @@ strong{
   outline: none;
   border: none;
 }
+
 .login.page .form {
   height: 100px;
-  margin-top: -100px;
-  position: absolute;
-  text-align: center;
-  top: 50%;
+  margin-top: 100px;
   width: 100%;
 }
 
 .login.page .form .usernameInput {
   background-color: transparent;
   border: none;
-  
   padding-bottom: 15px;
   text-align: center;
   width: auto;
@@ -85,16 +83,41 @@ strong{
   font-weight: 700;
 }
 
+.login.page .subtitle {
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 0;
+}
+
 .login.page .usernameInput {
   font-size: 200%;
   letter-spacing: 3px;
 }
 
 .login.page .title, .login.page .usernameInput {
-  color: #fff;
+  color: #efefef;
   font-weight: 400;
 }
 
+.login.page .header {
+  margin-bottom: 30px;
+}
+
+/*social links*/
+.social-links li {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.social-links li > a {
+  color: #fff;
+}
+.social-links li > a:visited {
+  color: #fff;
+} 
+.social-links li > a:hover {
+  color: rgba(255, 0, 128, 0.8);
+}  
 /* Chat page */
 
 .chat.page {
