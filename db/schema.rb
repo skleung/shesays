@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018121304) do
+ActiveRecord::Schema.define(version: 20141018124636) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "average_sentiment_score"
+    t.string   "average_sentiment_label"
   end
 
   create_table "reviews", force: true do |t|

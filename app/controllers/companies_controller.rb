@@ -16,6 +16,7 @@ class CompaniesController < ApplicationController
 
   def show
     @logo_url = get_company_logo_url(@company.name)
+    @company.average_sentiment()
     respond_with(@company)
   end
 
