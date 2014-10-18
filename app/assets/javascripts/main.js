@@ -1,7 +1,7 @@
  // Initialize varibles
   var $window = $(window);
   var $companyInput = $('#company-name'); // Input for username
-  var $slider = $('.bxslider');
+  var $slider = $('.bxslider'); 
   var $loginPage = $('.login.page'); // The login page
   var $chatPage = $('.chat.page'); // The chatroom page
 
@@ -36,14 +36,14 @@
       $companyInput.focus();
     }
     if (!clearedCompany) {
-      $('.bxslider').css("color", "#222");
+      $slider.css("color", "#222");
     }
     // When the client hits ENTER on their keyboard
     if (event.which === 13) {
       if (companyName) {
         typing = false;
       } else {
-        // setCompanyName();
+        setCompanyName();
       }
     }
   });

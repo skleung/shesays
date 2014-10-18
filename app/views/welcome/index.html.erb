@@ -22,7 +22,7 @@
           <div class="pull-right">
             <ul class="inline-links social-links">
               <li>
-                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="https://twitter.com/SheSaysCo"><i class="fa fa-twitter"></i></a>
               </li>
               <li>
                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -39,7 +39,7 @@
           <div class="title">What did <b>she</b> say</div>
           <div class="title">
           <%= form_tag('/search', id: "company-input", method: "get") do %>
-            <div id="company-prefix">@</div><%= text_field_tag :q, "", :autocomplete => :off, :id=>"company-name" %>
+            <div id="company-prefix"><b>@</b></div><%= text_field_tag :q, "", :autocomplete => :off, :id=>"company-name" %>
             <ul class="bxslider">
               <% Company.all.each do |c| %>
               <li><%=c.name %></li>
@@ -62,7 +62,17 @@
 
   <!-- bxslider useage -->
   <script>
+  $('.bxslider').bxSlider({
+        mode: 'vertical', //mode: 'fade',            
+        speed: 200,
+        auto: true,
+        pager: false,
+        infiniteLoop: true,
+        hideControlOnEnd: true,
+        useCSS: false
+    });
   $(document).ready(function(){
+
     var slider = $('.bxslider').bxSlider({
         mode: 'vertical', //mode: 'fade',            
         speed: 200,
@@ -95,30 +105,31 @@
 
 
   <script>
-     // Initialize varibles
+  var $nav = $('.navbar');
+  $nav.hide();
+  // Sets the client's companyName
+   // Initialize varibles
   var $window = $(window);
-  var $companyInput = $('#company'); // Input for username
-
+  var $companyInput = $('#company-name'); // Input for username
+  var $slider = $('.bxslider'); 
   var $loginPage = $('.login.page'); // The login page
   var $chatPage = $('.chat.page'); // The chatroom page
-  var $nav = $('.navbar');
+
   // Prompt for setting a username
   var companyName;
   var clearedCompany = false;
 
-  $nav.hide();
   // Sets the client's companyName
   function setCompanyName() {
     companyName = cleanInput($companyInput.html().trim());
+
     // If the companyName is valid
     if (companyName) {
       $loginPage.fadeOut();
       $chatPage.show();
-      $nav.show();
       $loginPage.off('click');
       // Tell the server your username
-      //TODO: query the server here for companyName
-      $("#selected-company").html(companyName);
+
     }
   }
 
@@ -135,8 +146,7 @@
       $companyInput.focus();
     }
     if (!clearedCompany) {
-      $companyInput.html("");
-      clearedCompany = true;
+      $slider.css("color", "#222");
     }
     // When the client hits ENTER on their keyboard
     if (event.which === 13) {
@@ -148,8 +158,20 @@
     }
   });
 
+  $("#company-input").submit(function(event) {
+    debugger
+    var cur = $slider.getCurrentSlide();
+    debugger
+    $companyInput.html(cur);
+    event.preventDefault();
+  });
+
+  $companyInput.click(function(event){
+    $('.bxslider').css("color", "#222");
+  });
+
   window.onload = function() {
-    $("#company").focus();
+    $("#company-name").focus();
   };
 
   </script>
