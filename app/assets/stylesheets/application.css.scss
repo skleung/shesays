@@ -58,8 +58,13 @@ b{
 }
 
 .navbar {
-  background-color: #f5f4eb;
-  height: 100px;
+  background-color: #ffe361;
+  height: 60px;
+  margin-bottom: 35px;
+  padding-top: 5px;
+  a, a:visited {
+    color: #ff6766;  
+  }
 }
 /* Pages */
 
@@ -135,13 +140,13 @@ b{
   margin-left: 15px;
 }
 
-.inline-links li > a {
+.social-links li > a {
   color: #fff;
 }
-.inline-links li > a:visited {
+.social-links li > a:visited {
   color: #fff;
 } 
-.inline-links li > a:hover {
+.social-links li > a:hover {
   color: rgba(255, 0, 128, 0.8);
 }  
 /* Chat page */
