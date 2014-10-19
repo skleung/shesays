@@ -6,8 +6,10 @@
       <%= form_for [@company, @review] do |f| %>
         <%= f.text_area :content, :rows=>"1", :id=>"content" %>
         </br>
+        Your overall sentiment: <%= f.select :sentiment_label, options_for_select(['positive', 'neutral', 'negative']) %>
+        </br>
+        </br>
       <%= f.submit "create", :class=>"btn btn-primary"%><%= link_to 'back', @company, :class=>"btn btn-link"%>
-
       <% end %>
     </div>
   </div>
