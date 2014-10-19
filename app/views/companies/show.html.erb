@@ -22,7 +22,6 @@
         <ul class="reviews">
 
           <% if @company.reviews.any? %>
-            <% byebug %>
             <% @company.reviews.order(updated_at: :desc).each do |review| %>
               <li>
                 <p><%=review.content %> </p>

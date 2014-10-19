@@ -29,6 +29,7 @@ class CompaniesController < ApplicationController
   end
 
   def edit
+    redirect_to(:action=>"show", :id=>params[:id])
   end
 
   def create
