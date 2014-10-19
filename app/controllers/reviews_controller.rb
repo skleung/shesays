@@ -26,9 +26,16 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.encrypted_key = User.hash_email(current_user.email)
 
-    result = run_sentiment_analysis(@review.content)
-    @review.sentiment_label = result[:sentiment]
-    @review.sentiment_score = result[:score]
+    #result = run_sentiment_analysis(@review.content)
+    #@review.sentiment_label = result[:sentiment]
+    #@review.sentiment_score = result[:score]
+    if @review.sentiment_label == 'positive'
+      @review.sentiment_score = 1.0
+    elsif @review.sentiment_label == 'neutral'
+      @review.sentiment_score = 0.0
+    else
+      @review.sentiment_score = -1.0
+    end
 
     if @review.save
         @company.reviews.append(@review)
@@ -36,7 +43,6 @@ class ReviewsController < ApplicationController
         flash[:notice] = 'Review was successfully created.' if @review.save
     end
 
-    puts result
     respond_with(@company)
   end
 
@@ -56,7 +62,7 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:content)
+      params.require(:review).permit(:content, :sentiment_label)
     end
 
     def check_logged_in

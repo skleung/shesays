@@ -10,7 +10,7 @@
 
           <!-- <img class="logo" src= "<%= @logo_url %>"/> -->
           <h2><%= @company.name %></h2>
-          <h4><%= @company.description %></h4>
+          <!--<h4><%= @company.description %></h4>-->
           <h4>Average Sentiment: <b><%= @company.average_sentiment_label %></b> </h4>
           <%= link_to raw("<strong>review</strong>++"), new_company_review_path(@company), :class=>"btn btn-primary", :id=>"new-review"%>
 
